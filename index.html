@@ -4,29 +4,53 @@
 
 <head>
     <title>Mapping</title>
+
+    <style>
+
+        #container {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .address {
+            margin-top: 3px;
+        }
+
+        label {
+            margin: 0 3px;
+        }
+
+    </style>
 </head>
 
 <body>
 
-    <button id="add">Add Address</button>
-    <button id="map">Map</button>
+    <button id="add" onclick="add()">Add Address</button>
+    <button id="map" onclick="map()">Map</button>
 
-    <label for="address">Address</label>
-    <input id="address">
-
-    <label for="city">City</label>
-    <input id="city">
-
-    <label for="state">State</label>
-    <input id="state">
-
-    <label for="zip">Zip</label>
-    <input id="zip">
+    <div id="container"></div>
 
     <script>
 
-        let field = (addr, city, state="", zip="") => {
+        let addresses = [];
+
+        let address = (street, city, state, zip) => {
             
+        }
+
+        function add() {
+
+            let template = '<div class="address"><label for="claim">Claim Number</label><input id="claim><label for="address">Address</label><input id="address"><label for="city">City</label><input id="city"><label for="state">State</label><input id="state"><label for="zip">Zip</label><input id="zip"></div>';
+
+            document.getElementById("container").innerHTML = document.getElementById("container").innerHTML + template;
+        }
+
+        function map() {
+
+        }
+
+        function render(addresses) {
+
         }
 
     </script>
