@@ -32,21 +32,38 @@
 
     <script>
 
-        let addresses = [];
+        var addresses = [];
 
-        let address = (street, city, state, zip) => {
-            
+        let address = (claim, street, city, state, zip) => {
+            return {"claim":claim, "street":street, "city":city, "state":state, "zip":zip};
         }
 
         function add() {
+            addresses.push(address("", "", "", ""));
+            update();
+        }
 
-            let template = '<div class="address"><label for="claim">Claim Number</label><input id="claim><label for="address">Address</label><input id="address"><label for="city">City</label><input id="city"><label for="state">State</label><input id="state"><label for="zip">Zip</label><input id="zip"></div>';
+        function update() {
+            for (let i = 0; i < addresses.length; i++) {
+                addresses[i]
+            }
 
-            document.getElementById("container").innerHTML = document.getElementById("container").innerHTML + template;
+            console.log(addresses.length);
+            document.getElementById("container").innerHTML = "";
+            for (let i = 0; i < addresses.length; i++) {
+                let k = i.toString();
+                let newAddress = '<div class="address" id="' + k + '">' + k + ' <label>Claim Number</label><input id="claim' + k + '"><label>Address</label><input id="address' + k + '"><label>City</label><input id="city' + k + '"><label>State</label><input id="state' + k + '"><label>Zip</label><input id="zip' + k + '"></div>';
+                document.getElementById("container").innerHTML = document.getElementById("container").innerHTML + newAddress;
+            }
         }
 
         function map() {
-
+            let waypoints = [];
+            for (let i = 0; i < addresses.length; i++) {
+                let c = addresses[i];
+                let s = c.street + " " + c.city + " " + c.state + " " + c.zip;
+                waypoints.push({"location": s, "stopover": false});
+            }
         }
 
         function render(addresses) {
